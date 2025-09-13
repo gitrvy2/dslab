@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<article class="publication">
+  <h1>{{ page.code }}</h1>
+  <h2>Information</h2>
+  <li>
+  {% for author in page.authors %}
+  {% if forloop.last and forloop.first != true %}
+        and 
+  {% endif %}
+  {{ author }},
+  <!-- {% unless forloop.last %}, {% endunless %} -->
+  {% endfor %}
+  <!-- {{ page.authors }}, -->
+  "{{ page.title }}",
+  {{ page.journal }},
+  {{ page.published }}.
+  </li>
+  <li>{{ page.link }}</li>
+
+  <br>
+
+  <h2>Description</h2>
+  <div class="profile-content">
+    {{ content }}
+  </div>
+
+</article>

@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<article class="researcher">
+  <h1>{{ page.name }}</h1>
+  {% include forms/researcher-table.html person=page %}
+
+  <div class="profile-content">
+    {{ content }}
+  </div>
+
+</article>

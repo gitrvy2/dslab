@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% assign phd_students = site.researchers | where_exp: "researcher", "researcher.title contains 'Ph.D. Program'" %}
+  {% assign ms_students = site.researchers | where_exp: "researcher", "researcher.title contains 'MS. Program'" %}
+  <ul>
+    <h2>Ph.D. Program</h1>
+    {% for researcher in phd_students %}
+    {% include forms/researcher-table.html person=researcher%}
+    {% endfor %}
+
+    <h2>MS. Program</h1>
+    {% for researcher in ms_students %}
+    {% include forms/researcher-table.html person=researcher %}
+    {% endfor %}
+  </ul>
+
+</article>

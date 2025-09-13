@@ -1,0 +1,50 @@
+---
+layout: default
+---
+{% comment %}
+ 1. 정렬 넣기 (년도)
+ 2. Journal, Conference가 길어서 Conference를 따로 빼야할 수도
+ 3. List에 년도 제한을 넣기 -> 너무 길어서
+ 4. citation style로 넣기. 지금은 제목만 임시로 넣음
+{% endcomment %}
+
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% assign scis = site.publications | where_exp: "publication", "publication.index contains 'SCI'" %}
+  {% assign scopuses = site.publications | where_exp: "publication", "publication.index contains 'Scopus'" %}
+  {% assign others = site.publications | where_exp: "publication", "publication.index contains 'Others'" %}
+
+  <h1>Journals</h1>
+  <ul>
+    <h2>International</h2>
+    <h3>SCI(E)</h1>
+    {% for paper in scis %}
+    <li> <a href="{{ paper.url | relative_url }}"">{{ paper.title }}</a> </li>
+    {% endfor %}
+    <br>
+
+    <h3>Scopus</h1>
+    {% for paper in scopuses %}
+    <li> <a href="{{ paper.url | relative_url }}"">{{ paper.title }}</a> </li>
+    {% endfor %}
+    <br>
+
+    <h3>Others</h1>
+    {% for paper in others %}
+    <li> <a href="{{ paper.url | relative_url }}"">{{ paper.title }}</a> </li>
+    {% endfor %}
+    <br>
+
+    <h2>Domestic</h2>
+  </ul>
+  <h1>Conferences</h1>
+
+</article>

@@ -1,0 +1,28 @@
+
+<table class="researcher-table">
+    <tbody>
+        <tr>
+            <th scope="row">Name</th>
+            <td>
+                <a href="{{ include.person.url | relative_url }}">{{ include.person.name }}</a>
+            </td>
+            <td class="researcher-photo-cell" rowspan="3">
+                <img src="{{ include.person.image | relative_url}}" alt="photo">
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Title</th>
+            <td>{{ include.person.title }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Email</th>
+            <td>{{ include.person.email }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Thesis</th>
+            <td colspan="2">
+                {{ include.person.thesis }}
+            </td>
+        </tr>
+    </tbody>
+</table>
